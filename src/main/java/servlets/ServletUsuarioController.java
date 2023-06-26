@@ -4,15 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.util.HashMap;
+import java.util.HashMap;  
 import java.util.List;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 import org.apache.commons.compress.utils.IOUtils;
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -21,6 +14,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beandto.BeanDtoGraficoSalarioUser;
 import dao.DAOUsuarioRepository;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import model.ModelLogin;
 import util.ReportUtil;
 
@@ -51,7 +50,7 @@ public class ServletUsuarioController extends ServletGenericUtil {
 			 List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList(super.getUserLogado(request));
 		     request.setAttribute("modelLogins", modelLogins);
 		     
-			 request.setAttribute("msg", "Excluido com sucesso!");
+			 request.setAttribute("msg", "Successfully deleted!");
 			 request.setAttribute("totalPagina", daoUsuarioRepository.totalPagina(this.getUserLogado(request)));
 			 request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
 		 }
@@ -62,7 +61,7 @@ public class ServletUsuarioController extends ServletGenericUtil {
 				 daoUsuarioRepository.deletarUser(idUser);
 				 
 				 response.getWriter().write("Excluido com sucesso!");
-				 
+			 
 		 }
 		 
 		 else if (acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("buscarUserAjax")) {
@@ -105,7 +104,7 @@ public class ServletUsuarioController extends ServletGenericUtil {
 			     List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList(super.getUserLogado(request));
 			     request.setAttribute("modelLogins", modelLogins);
 			     
-			    request.setAttribute("msg", "Usu�rio em edi��o");
+			    request.setAttribute("msg", "Editing user.");
 				request.setAttribute("modolLogin", modelLogin);
 				request.setAttribute("totalPagina", daoUsuarioRepository.totalPagina(this.getUserLogado(request)));
 				request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
@@ -115,7 +114,7 @@ public class ServletUsuarioController extends ServletGenericUtil {
 			 
 			 List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList(super.getUserLogado(request));
 			 
-			 request.setAttribute("msg", "Usu�rios carregados");
+			 request.setAttribute("msg", "Users already saved in the system.");
 		     request.setAttribute("modelLogins", modelLogins);
 		     request.setAttribute("totalPagina", daoUsuarioRepository.totalPagina(this.getUserLogado(request)));
 			 request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
@@ -128,7 +127,7 @@ public class ServletUsuarioController extends ServletGenericUtil {
 			 ModelLogin modelLogin =  daoUsuarioRepository.consultaUsuarioID(idUser, super.getUserLogado(request));
 			 if (modelLogin.getFotouser() != null && !modelLogin.getFotouser().isEmpty()) {
 				 
-				 response.setHeader("Content-Disposition", "attachment;filename=arquivo." + modelLogin.getExtensaofotouser());
+				 response.setHeader("Content-Disposition", "attachment;filename=photo-employee." + modelLogin.getExtensaofotouser());
 				 response.getOutputStream().write(new Base64().decodeBase64(modelLogin.getFotouser().split("\\,")[1]));
 				 
 			 }
@@ -193,7 +192,7 @@ public class ServletUsuarioController extends ServletGenericUtil {
 			 byte[] relatorio = new ReportUtil().geraReltorioPDF(modelLogins, "resl-user-jsp", params ,request.getServletContext());
 			 
 			 
-			 response.setHeader("Content-Disposition", "attachment;filename=arquivo.pdf");
+			 response.setHeader("Content-Disposition", "attachment;filename=PDF-report.pdf");
 			 response.getOutputStream().write(relatorio);
 			 
 		 }
@@ -260,7 +259,7 @@ public class ServletUsuarioController extends ServletGenericUtil {
 		
 		try {
 			
-		String msg = "Opera��o realizada com sucesso!";	
+		String msg = "Action performed successfully!";	
 		
 		String id = request.getParameter("id");
 		String nome = request.getParameter("nome");
@@ -313,12 +312,12 @@ public class ServletUsuarioController extends ServletGenericUtil {
 		}
 		
 		if (daoUsuarioRepository.validarLogin(modelLogin.getLogin()) && modelLogin.getId() == null) {
-			msg = "J� existe usu�rio com o mesmo login, informe outro login;";
+			msg = "There is already a user with the same login, please inform another login.";
 		}else {
 			if (modelLogin.isNovo()) {
-				msg = "Gravado com sucesso!";
+				msg = "User registered successfully.";
 			}else {
-				msg= "Atualizado com sucesso!";
+				msg= "User updated successfully.";
 			}
 			
 		    modelLogin = daoUsuarioRepository.gravarUsuario(modelLogin, super.getUserLogado(request));

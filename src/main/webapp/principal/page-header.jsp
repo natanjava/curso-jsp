@@ -7,16 +7,16 @@
                               <div class="row align-items-center">
                                   <div class="col-md-8">
                                       <div class="page-header-title">
-                                          <h5 class="m-b-10">Projeto Java Jdev Treinamento</h5>
-                                          <p class="m-b-0">Bem vindo!</p>
+                                          <h5 class="m-b-10">Projeto 1 - User Managment System</h5>
+                                          <p class="m-b-0">Welcome!</p>
                                       </div>
                                   </div>
                                   <div class="col-md-4">
                                       <ul class="breadcrumb-title">
                                           <li class="breadcrumb-item">
-                                              <a href="index.html"> <i class="fa fa-home"></i> </a>
+                                              <a href="<%=request.getContextPath() %>/principal/principal.jsp"> <i class="fa fa-home"></i> </a>
                                           </li>
-                                          <li class="breadcrumb-item"><a href="#!">Projeto Java EE</a>
+                                          <li class="breadcrumb-item"><a href="<%=request.getContextPath() %>/principal/principal.jsp">Java EE Project - JSP and Servlets</a>
                                           </li>
                                       </ul>
                                   </div>

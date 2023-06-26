@@ -19,8 +19,8 @@
                               </div>
                           </div>
                       </div>
-                      <a href="index.html">
-                          <img width="40px" class="img-fluid" src="<%= request.getContextPath() %>/assets/images/logo.png" alt="Theme-Logo" />
+                      <a href="<%= request.getContextPath() %>/principal/principal.jsp">
+                          <img width="80px;" style="position: relative; left: 600px" class="img-fluid" src="<%= request.getContextPath() %>/assets/images/java-logo.jpg" alt="Theme-Logo" />
                       </a>
                       <a class="mobile-options waves-effect waves-light">
                           <i class="ti-more"></i>
@@ -32,6 +32,7 @@
                           <li>
                               <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
                           </li>
+                          <!-- 
                           <li class="header-search">
                               <div class="main-search morphsearch-search">
                                   <div class="input-group">
@@ -41,6 +42,7 @@
                                   </div>
                               </div>
                           </li>
+                          -->
                           <li>
                               <a href="#!" onclick="javascript:toggleFullScreen()" class="waves-effect waves-light">
                                   <i class="ti-fullscreen"></i>
@@ -48,11 +50,13 @@
                           </li>
                       </ul>
                       <ul class="nav-right">
+                      		<!-- 
                           <li class="header-notification">
                               <a href="#!" class="waves-effect waves-light">
                                   <i class="ti-bell"></i>
                                   <span class="badge bg-c-red"></span>
                               </a>
+                              
                               <ul class="show-notification">
                                   <li>
                                       <h6>Novidades</h6>
@@ -90,6 +94,7 @@
                                   </li>
                               </ul>
                           </li>
+							 -->
                           <li class="user-profile header-notification">
                               <a href="#!" class="waves-effect waves-light">
                                  
@@ -125,7 +130,7 @@
                                   -->
                                   <li class="waves-effect waves-light">
                                       <a href="<%=request.getContextPath() %>/ServletLogin?acao=logout">
-                                          <i class="ti-layout-sidebar-left"></i> Sair
+                                          <i class="ti-layout-sidebar-left"></i> Logout
                                       </a>
                                   </li>
                               </ul>

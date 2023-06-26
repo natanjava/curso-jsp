@@ -4,14 +4,21 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class SingleConnectionBanco {
+	/*
+	private static String banco = "jdbc:postgresql://localhost:5433/curso-jsp?autoReconnect=true";
+	private static String user = "postgres";
+	private static String senha = "admin";
+	private static Connection connection = null; */
 	
+	 //conexão direta com o banco no servidor Heroku
 	private static String banco = "jdbc:postgresql://ec2-34-236-103-63.compute-1.amazonaws.com:5432/dbjnekanokg26n?sslmode=require&autoReconnect=true";
 	private static String user = "sfnuuqgvjmyfqw";
 	private static String senha = "2c625d3a34127e633d1cdd4983391d8a67e289372e313a712340ac3e16fcdcfa";
 	private static Connection connection = null;
+	 
 	
 	
-	/*dddfdfdd*/
+	
 	public static Connection getConnection() {
 		return connection;
 	}

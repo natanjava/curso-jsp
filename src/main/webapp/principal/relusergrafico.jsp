@@ -44,7 +44,12 @@
 												<!-- Basic Form Inputs card start -->
 												<div class="card">
 													<div class="card-block">
-														<h4 class="sub-title">Rel. Usuário</h4>
+														<h4 class="sub-title">Comparative Chart</h4>
+														The generated graph compares each position with its respective average wage, using the date of the birth as a filter.<br>
+														If date fields are empty, it searches all users registered in the system.
+														 <br><br><br>
+														
+														
 
 														<form class="form-material" 
 															action="<%=request.getContextPath()%>/ServletUsuarioController"
@@ -55,19 +60,19 @@
 															<div class="form-row align-items-center">
 															
 																<div class="col-sm-3 my-1">
-																	<label class="sr-only" for="dataInicial">Data Inicial</label>
+																	<label class="form-label" for="dataInicial">Initial date</label>
+															   <!-- <label class="sr-only" for="dataInicial">Data Inicial</label> -->
 																	<input value="${dataInicial}" type="text" class="form-control" id="dataInicial" name="dataInicial">
 																</div>
 																
 																<div class="col-sm-3 my-1">
-																	<label class="sr-only" for="dataFinal">Data Final</label>
-																	
-																		<input value="${dataFinal}" type="text" class="form-control" id="dataFinal" name="dataFinal">
-																	
+																	<label class="form-label" for="dataFinal">Final date</label>
+																<!-- <label class="sr-only" for="dataFinal">Data Final</label>  -->																	
+																		<input value="${dataFinal}" type="text" class="form-control" id="dataFinal" name="dataFinal">																	
 																</div>
 
 																<div class="col-auto my-1">
-																	<button type="button" onclick="gerarGrafico();" class="btn btn-primary">Gerar Gráfico</button>
+																	<button type="button" onclick="gerarGrafico();" class="btn btn-primary">Generate chart</button>
 																</div>
 															</div>
 
@@ -135,7 +140,7 @@ function gerarGrafico() {
 				  data: {
 				      labels: json.perfils,
 				      datasets: [{
-				        label: 'Gráfico de média salarial por tipo',
+				        label: 'Average salary for each Position',
 				        backgroundColor: 'rgb(255, 99, 132)',
 				        borderColor: 'rgb(255, 99, 132)',
 				        data: json.salarios,
@@ -148,7 +153,7 @@ function gerarGrafico() {
 	     }
 	     
 	 }).fail(function(xhr, status, errorThrown){
-	    alert('Erro ao buscar dados para o grafico ' + xhr.responseText);
+	    alert('Error fetching data for chart. ' + xhr.responseText);
 	 });
     
     

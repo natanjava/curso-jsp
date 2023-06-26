@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+
+<!-- Last Update: 26/06/2023, 11h20min -->
+
+
 <html lang="en">
 <head>
 	<meta charset="ISO-8859-1">
@@ -8,21 +12,21 @@
 	<!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 	
-	<title>Curso JSP</title>
+	<title>User Managment System</title>
 	
 <style type="text/css">
 
 form{
  position: absolute;
- top: 40%;
+ top: 30%;
  left: 33%;
  right: 33%;
 }
 
 
-h1{
+h2{
  position: absolute;
- top: 17%;
+ top: 13%;
  left: 33%;
 }
 h8 {
@@ -46,13 +50,14 @@ h8 {
 </head>
 <body>
 
-
-<h1>Welcome to Project 1</h1>  
+ 
+<h2>Welcome to "User <br> Management System"</h2>  
+<!-- 
 <h8>Logins/Passwords available: <br>
 	admin1 / admin1 or
 	admin2 / admin2
 </h8>
-
+ -->
 
 
 <form action="<%=request.getContextPath() %>/ServletLogin" method="post" class="row g-3 needs-validation" novalidate>
@@ -60,8 +65,8 @@ h8 {
 <input type="hidden" value="<%= request.getParameter("url") %>" name="url">
 
 <div class="mb-3">
-  <label class="form-label" for="login">Login</label>
-  <input class="form-control" id="login" name="login" type="text" required>
+  <label class="form-label" for="login">Login </label>
+  <input class="form-control" id="login" name="login" type="text" required value="admin1" style="width: 330px;">
    <div class="invalid-feedback">
       Required Field
     </div>
@@ -72,7 +77,7 @@ h8 {
  
  <div class="mb-3">
   <label class="form-label" for="senha">Password</label> 
-  <input class="form-control" id="senha" name="senha" type="password" required>
+  <input class="form-control" id="senha" value="admin1" name="senha" type="password" required style="width: 330px;">
    <div class="invalid-feedback">
       Required field
     </div>
@@ -80,8 +85,10 @@ h8 {
       ok
     </div>
  </div>
-
-  <input type="submit" value="Acessar" class="btn btn-primary">
+  <!-- 
+  <input class="btn btn-primary" type="button" value="See Available Logins" onclick="mostraLogins();" style="width: 200px; position: relative; left: 30px; top: 20px;"  > 
+   -->	
+  <input type="submit" value="Access" class="btn btn-primary" style="width: 120px; position: relative; left: 100px; top: 20px;">
 
 </form>
 
@@ -112,6 +119,16 @@ h8 {
       }, false)
     })
 })()
+
+
+function mostraLogins() {
+	const str = "\n\n"+"                          Logins / Passwords" +"\n\n"
+	+"                          admin1 / admin1" + "\n\n"
+	+"                          admin2 / admin2"+"\n\n";
+	window.alert(str);
+
+	
+}
 
 </script>
 </body>

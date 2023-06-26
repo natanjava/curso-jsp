@@ -44,43 +44,45 @@
 												<!-- Basic Form Inputs card start -->
 												<div class="card">
 													<div class="card-block">
-														<h4 class="sub-title">Rel. Usuário</h4>
+														<h4 class="sub-title">User Report</h4>
 
 														<form class="form-material" 
 															action="<%=request.getContextPath()%>/ServletUsuarioController"
 															method="get" id="formUser">
 															
 															<input type="hidden" id="acaoRelatorioImprimirTipo"  name="acao" value="imprimirRelatorioUser">
-
+															User data report, using birthday as a filter. If date fields are empty, it searches all users registered in the system. <br><br><br>
 															<div class="form-row align-items-center">
 															
 																<div class="col-sm-3 my-1">
-																	<label class="sr-only" for="dataInicial">Data Inicial</label>
+																	<label class="form-label" for="dataInicial">Initial date</label>
+																	<!-- <label class="sr-only" for="dataInicial">Initial date</label>		 -->															
 																	<input value="${dataInicial}" type="text" class="form-control" id="dataInicial" name="dataInicial">
 																</div>
 																
 																<div class="col-sm-3 my-1">
-																	<label class="sr-only" for="dataFinal">Data Final</label>
-																	
-																		<input value="${dataFinal}" type="text" class="form-control" id="dataFinal" name="dataFinal">
-																	
+																	<label class="form-label" for="dataFinal">Final date</label>
+																	<!-- <label class="sr-only" for="dataInicial">Initial date</label>		 -->																			
+																	<input value="${dataFinal}" type="text" class="form-control" id="dataFinal" name="dataFinal">																	
 																</div>
 
 																<div class="col-auto my-1">
-																	<button type="button" onclick="imprimirHtml();" class="btn btn-primary">Imprimir Relatório</button>
-																	<button type="button" onclick="imprimirPdf();" class="btn btn-primary">Imprimir PDF</button>
+																	<button type="button" onclick="imprimirHtml();" class="btn btn-primary">Print on screen</button>
+																	<button type="button" onclick="imprimirPdf();" class="btn btn-primary">Print PDF</button>
 																</div>
 															</div>
 
 														</form>
 														
-														
+														<br><br>
 														<div style="height: 300px; overflow: scroll;">
 															<table class="table" id="tabelaresultadosview">
 																<thead>
 																	<tr>
 																		<th scope="col">ID</th>
-																		<th scope="col">Nome</th>
+																		<th scope="col">Name</th>
+																		<th scope="col">Position in the company</th>
+																		<th scope="col">Date of birth</th>
 																	</tr>
 																</thead>
 																<tbody>
@@ -88,6 +90,8 @@
 																	      <tr>
 																	       <td><c:out value="${ml.id}"></c:out></td>
 																	       <td><c:out value="${ml.nome}"></c:out></td>
+																	       <td><c:out value="${ml.perfil}"></c:out></td>
+																	       <td><c:out value="${ml.dataNascimento}"></c:out></td>
 																	      </tr>
 																	      
 																	      <c:forEach items="${ml.telefones}" var="fone">
@@ -96,6 +100,13 @@
 																	          <td style="font-size: 10px;"><c:out value="${fone.numero}"></c:out></td>
 																	        </tr>
 																	      </c:forEach>
+																	      
+																	      <!-- 
+																	      <tr>
+																	     
+																	       <td><c:out value="${ml.perfil}"></c:out></td>																	       
+																	      </tr>
+																	       -->
 																	</c:forEach>
 																</tbody>
 															</table>

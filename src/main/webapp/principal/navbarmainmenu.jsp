@@ -13,14 +13,14 @@
                               <div class="main-menu-header">
                                   
                                    <c:if test="${imagemUser != '' && imagemUser != null}">
-                                     <img class="img-80 img-radius" src="${imagemUser}" alt="User-Profile-Image">
+                                     <img class="img-80 img-radius" src="${imagemUser}" alt="User-Profile-Image" style="position: relative; left:-30px;">
                                   </c:if>
                                   
                                    <c:if test="${imagemUser == '' ||  imagemUser == null}">
-                                     <img class="img-80 img-radius" src="<%= request.getContextPath() %>/assets/images/avatar-4.jpg" alt="User-Profile-Image">
+                                     <img class="img-80 img-radius" src="<%= request.getContextPath() %>/assets/images/user.png" alt="User-Profile-Image">
                                   </c:if>
                                   
-                                  <div class="user-details">
+                                  <div class="user-details" style="position: relative; left:-30px;">
                                       <span id="more-details"><%= request.getSession().getAttribute("usuario") %><i class="fa fa-caret-down"></i></span>
                                   </div>
                               </div>
@@ -51,14 +51,14 @@
                               <li class="active">
                                   <a href="<%=request.getContextPath() %>/principal/principal.jsp" class="waves-effect waves-dark" style="margin-top: 10px;">
                                       <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                                      <span class="pcoded-mtext" data-i18n="nav.dash.main">Início</span>
+                                      <span class="pcoded-mtext" data-i18n="nav.dash.main">Home</span>
                                       <span class="pcoded-mcaret"></span>
                                   </a>
                               </li>
                               <li class="pcoded-hasmenu">
                                   <a href="javascript:void(0)" class="waves-effect waves-dark">
                                       <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                      <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Cadastro</span>
+                                      <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Register</span>
                                       <span class="pcoded-mcaret"></span>
                                   </a>
                                   
@@ -67,7 +67,7 @@
                                       <li class=" ">
                                           <a href="<%= request.getContextPath() %>/ServletUsuarioController?acao=listarUser" class="waves-effect waves-dark">
                                               <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Usuário</span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">User</span>
                                               <span class="pcoded-mcaret"></span>
                                           </a>
                                       </li>
@@ -143,12 +143,12 @@
                                   </ul>
                               </li>
                           </ul>
-                          <div class="pcoded-navigation-label" data-i18n="nav.category.forms">Relatório</div>
+                          <div class="pcoded-navigation-label" data-i18n="nav.category.forms">Report</div>
                           <ul class="pcoded-item pcoded-left-item">
                               <li>
                                   <a href="<%=request.getContextPath() %>/principal/reluser.jsp" class="waves-effect waves-dark">
                                       <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                                      <span class="pcoded-mtext"  data-i18n="nav.form-components.main">Usuário</span>
+                                      <span class="pcoded-mtext"  data-i18n="nav.form-components.main">User</span>
                                       <span class="pcoded-mcaret"></span>
                                   </a>
                               </li>
@@ -156,7 +156,7 @@
  								<li>
                                   <a href="<%=request.getContextPath() %>/principal/relusergrafico.jsp" class="waves-effect waves-dark">
                                       <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                                      <span class="pcoded-mtext"  data-i18n="nav.form-components.main">Gráfico Salário</span>
+                                      <span class="pcoded-mtext"  data-i18n="nav.form-components.main">Salary Chart</span>
                                       <span class="pcoded-mcaret"></span>
                                   </a>
                               </li>
