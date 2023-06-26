@@ -66,15 +66,11 @@
 			                                                <a class="accordion-msg bg-dark-primary b-none waves-effect waves-light">User Control - Access Restriction</a>
 			                                                <div class="accordion-desc">
 			                                                    <p>
-			                                                        For 'business rules' purposes: Users admin1 and admin2 are not visible. They were created in the database, 
-			                                                        without using a registration form, before the system started working. And it should be considered that both 
-			                                                        were created by admin1. Their salaries are respectively '9700.76' and '5600.45'. When generating the salary report, only 
-			                                                        users created by each ADMIN/ADMINISTRATOR logged in at that time are considered. Only those who are ADMIN can create 
-			                                                        new users, including new ADMINs. Other types of user (AUXILIAR/ASSISTENT or SECRETARIA/SECRETARY) can access the 
-			                                                        system using login/password, but cannot register new users in the system. They don't have that privilege. 
-			                                                        If a third ADMIN is created, he can to log in to the site and create users, and then generate reports and salary charts, 
-			                                                        but only with the users he created himself. This happens with all ADMINs in the system, each one accessing their records, 
-			                                                        searching, generating reports and graphs.
+			                                                        For the purpose of 'business rules': The user admin1 (password 'admin1') does not appear in searches. Who created admin1 was himself. 
+			                                                        His salary is '9700.76'. When an ADMIN generates the salary report, the data that appears on the screen belongs to users that were created 
+			                                                        by the ADMIN itself. Only those who are ADMIN can create new users, including new ADMINs, and these new ADMINs will be visible. 
+			                                                        Not only user type ADMIN, but also other types of user (AUXILIARY/ASSISTENT or SECRETARIA/SECRETARY) can access the system, using login/password, 
+			                                                        but they cannot register new users in the system. They have no such privilege.
 			                                                    </p>
 			                                                </div>
 			                                                <a class="accordion-msg bg-darkest-primary b-none waves-effect waves-light">ZIP CODE Validation</a>
