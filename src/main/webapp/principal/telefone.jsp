@@ -46,7 +46,7 @@
 												<div class="card">
 
 													<div class="card-block">
-														<h4 class="sub-title">Cad. Telefone</h4>
+														<h4 class="sub-title">Phone registration</h4>
 															
 															 <form class="form-material"  action="<%= request.getContextPath() %>/SertvletTelefone" method="post" id="formFone" >
 
@@ -62,17 +62,17 @@
 															<div class="form-group form-default form-static-label">
                                                                 <input readonly="readonly" type="text" name="nome" id="nome" class="form-control" required="required" value="${modelLogin.nome}">
                                                                 <span class="form-bar"></span>
-                                                                <label class="float-label">Nome:</label>
+                                                                <label class="float-label">Name:</label>
                                                             </div>
                                                             
                                                             
                                                             <div class="form-group form-default form-static-label">
                                                                 <input  type="text" name="numero" id="numero" class="form-control" required="required" >
                                                                 <span class="form-bar"></span>
-                                                                <label class="float-label">Numero:</label>
+                                                                <label class="float-label">Phone number:</label>
                                                             </div>
                                                             
-                                                            <button  class="btn btn-success waves-effect waves-light">Salvar</button>
+                                                            <button  class="btn btn-success waves-effect waves-light">Save</button>
 
 														</form>
 													</div>
