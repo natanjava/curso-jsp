@@ -1,6 +1,6 @@
 <%@page import="model.ModelLogin"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -81,7 +81,7 @@
 																<input type="file" id="fileFoto" name="fileFoto"
 																	accept="image/*"
 																	onchange="visualizarImg('fotoembase64', 'fileFoto');"
-																	class="form-control-file"
+																	class="form-control-file" title="Choose a File"
 																	style="margin-top: 15px; margin-left: 5px;">
 															</div>
 
@@ -125,39 +125,26 @@
 																		Position]</option>
 
 																	<option value="ADMIN"
-																		<% 
-																
-																
-																ModelLogin modelLogin = (ModelLogin) request.getAttribute("modolLogin");
-																
-																
-																if (modelLogin != null && modelLogin.getPerfil().equals("ADMIN")) {
+																		<% ModelLogin modelLogin = (ModelLogin) request.getAttribute("modolLogin");
+																		   if (modelLogin != null && modelLogin.getPerfil().equals("ADMIN")) {						
+																		   out.print(" ");
+																		   out.print("selected=\"selected\"");
+																		   out.print(" ");
+																		} %>>Admin</option>
+																	<option value="MANAGER"
+																		<% modelLogin = (ModelLogin) request.getAttribute("modolLogin");
+																	 	if (modelLogin != null && modelLogin.getPerfil().equals("MANAGER")) {
 																		out.print(" ");
-																		 out.print("selected=\"selected\"");
+																		out.print("selected=\"selected\"");
 																		out.print(" ");
-																} %>>Admin</option>
-
-																	<option value="SECRETARIA"
-																		<% 
-																		
-																   modelLogin = (ModelLogin) request.getAttribute("modolLogin");
-																		
-																	if (modelLogin != null && modelLogin.getPerfil().equals("SECRETARIA")) {
+																	} %>>MANAGER</option>
+																	<option value="ASSISTENT"
+																		<% modelLogin = (ModelLogin) request.getAttribute("modolLogin");
+																		if (modelLogin != null && modelLogin.getPerfil().equals("ASSISTENT")) {
 																		out.print(" ");
-																		 out.print("selected=\"selected\"");
+																		out.print("selected=\"selected\"");
 																		out.print(" ");
-																	
-																} %>>Secret·ria</option>
-
-																	<option value="AUXILIAR"
-																		<% 
-																	modelLogin = (ModelLogin) request.getAttribute("modolLogin");
-																				
-																	if (modelLogin != null && modelLogin.getPerfil().equals("AUXILIAR")) {
-																		out.print(" ");
-																		 out.print("selected=\"selected\"");
-																		out.print(" ");
-																} %>>Auxiliar</option>
+																	} %>>ASSISTENT</option>
 
 																</select> <span class="form-bar"></span> <label
 																	class="float-label">Position:</label>
@@ -231,31 +218,31 @@
 
 															<div class="form-group form-default form-static-label">
 																<input type="radio" name="sexo" checked="checked"
-																	value="MASCULINO"
+																	value="MASCULIN"
 																	<%
                                                             
                                                              modelLogin = (ModelLogin) request.getAttribute("modolLogin");
                                                                  
-                                                             if (modelLogin != null && modelLogin.getSexo().equals("MASCULINO")) {
+                                                             if (modelLogin != null && modelLogin.getSexo().equals("MASCULIN")) {
 																	out.print(" ");
 																	 out.print("checked=\"checked\"");
 																	out.print(" ");
 															}
                                                              
-                                                             %>>Masculino</>
+                                                             %>>Masculin</>
 
-																<input type="radio" name="sexo" value="FEMININO"
+																<input type="radio" name="sexo" value="FEMININ"
 																	<%
                                                             
                                                              modelLogin = (ModelLogin) request.getAttribute("modolLogin");
                                                                  
-                                                             if (modelLogin != null && modelLogin.getSexo().equals("FEMININO")) {
+                                                             if (modelLogin != null && modelLogin.getSexo().equals("FEMININ")) {
 																	out.print(" ");
 																	 out.print("checked=\"checked\"");
 																	out.print(" ");
 															}
                                                              
-                                                             %>>Feminino</>
+                                                             %>>Feminin</>
 															</div>
 
 															<button type="button"
@@ -317,15 +304,10 @@
 											    for (int p = 0; p < totalPagina; p++){
 											    	String url = request.getContextPath() + "/ServletUsuarioController?acao=paginar&pagina=" + (p * 5);  
 											    	out.print("<li class=\"page-item\"><a class=\"page-link\" href=\""+ url +"\">"+(p + 1)+"</a></li>");
-											    }
-											   
+											    }										   
 											   %>
-
-
 											</ul>
 										</nav>
-
-
 
 									</div>
 									<!-- Page-body end -->
@@ -403,7 +385,7 @@
 	<script type="text/javascript">
 		$("#rendamensal").maskMoney({
 			showSymbol : true,
-			symbol : "R$ ",
+			symbol : "$ ",
 			decimal : ",",
 			thousands : "."
 		});
@@ -437,21 +419,20 @@
 					.datepicker(
 							{
 								dateFormat : 'dd/mm/yy',
-								dayNames : [ 'Domingo', 'Segunda', 'TerÁa',
-										'Quarta', 'Quinta', 'Sexta', 'S·bado' ],
-								dayNamesMin : [ 'D', 'S', 'T', 'Q', 'Q', 'S',
-										'S', 'D' ],
-								dayNamesShort : [ 'Dom', 'Seg', 'Ter', 'Qua',
-										'Qui', 'Sex', 'S·b', 'Dom' ],
-								monthNames : [ 'Janeiro', 'Fevereiro', 'MarÁo',
-										'Abril', 'Maio', 'Junho', 'Julho',
-										'Agosto', 'Setembro', 'Outubro',
-										'Novembro', 'Dezembro' ],
-								monthNamesShort : [ 'Jan', 'Fev', 'Mar', 'Abr',
-										'Mai', 'Jun', 'Jul', 'Ago', 'Set',
-										'Out', 'Nov', 'Dez' ],
-								nextText : 'PrÛximo',
-								prevText : 'Anterior'
+								dayNames : [ 'Sunday', 'Monday', 'Tuesday',
+										'Wednesday', 'Thursday', 'Friday', 'Saturday' ],
+								dayNamesMin : [ 'S', 'M', 'T', 'W', 'T', 'F',
+										'S', 'S' ],
+								dayNamesShort : [ 'Sun', 'Mon', 'Tue', 'Wed',
+										'Thu', 'Fri', 'Sat', 'Sun' ],
+								monthNames : [ 'January', 'February', 'March', 'April',
+												'May', 'June', 'July', 'August', 'September', 
+												'October', 'November', 'December'],
+								monthNamesShort : [ 'Jan', 'Feb', 'Mar', 'Apr',
+										'Mai', 'Jun', 'Jul', 'Aug', 'Sep',
+										'Oct', 'Nov', 'Dec' ],
+								nextText : 'Next',
+								prevText : 'Previous'
 							});
 		});
 
@@ -482,16 +463,16 @@
 
 		function visualizarImg(fotoembase64, filefoto) {
 
-			var preview = document.getElementById(fotoembase64); // campo IMG html
+			var preview = document.getElementById(fotoembase64); // Field IMG 
 			var fileUser = document.getElementById(filefoto).files[0];
 			var reader = new FileReader();
 
 			reader.onloadend = function() {
-				preview.src = reader.result; /*Carrega a foto na tela*/
+				preview.src = reader.result; /*load the photo on the screen*/
 			};
 
 			if (fileUser) {
-				reader.readAsDataURL(fileUser); /*Preview da imagem*/
+				reader.readAsDataURL(fileUser); /*Previewof Image*/
 			} else {
 				preview.src = '';
 			}
@@ -511,37 +492,30 @@
 			var urlAction = document.getElementById('formUser').action;
 			var nomeBusca = document.getElementById('nomeBusca').value;
 
-			$
-					.ajax(
-							{
-								method : "get",
-								url : urlAction,
-								data : url,
-								success : function(response, textStatus, xhr) {
+			$.ajax(
+				{
+					method : "get",
+					url : urlAction,
+					data : url,
+					success : function(response, textStatus, xhr) {
+							var json = JSON.parse(response);
+							$('#tabelaresultados > tbody > tr').remove();
+							$("#ulPaginacaoUserAjax > li").remove();
 
-									var json = JSON.parse(response);
+							for (var p = 0; p < json.length; p++) {
+								$('#tabelaresultados > tbody').append(
+									'<tr> <td>'
+									+ json[p].id
+									+ '</td> <td> '
+										+ json[p].nome
+									+ '</td> <td><button onclick="verEditar('
+									+ json[p].id
+									+ ')" type="button" class="btn btn-info">Ver</button></td></tr>');
+								}
+							document.getElementById('totalResultados').textContent = 'Resultados: '
+							+ json.length;
 
-									$('#tabelaresultados > tbody > tr')
-											.remove();
-									$("#ulPaginacaoUserAjax > li").remove();
-
-									for (var p = 0; p < json.length; p++) {
-										$('#tabelaresultados > tbody')
-												.append(
-														'<tr> <td>'
-																+ json[p].id
-																+ '</td> <td> '
-																+ json[p].nome
-																+ '</td> <td><button onclick="verEditar('
-																+ json[p].id
-																+ ')" type="button" class="btn btn-info">Ver</button></td></tr>');
-									}
-
-									document.getElementById('totalResultados').textContent = 'Resultados: '
-											+ json.length;
-
-									var totalPagina = xhr
-											.getResponseHeader("totalPagina");
+							var totalPagina = xhr.getResponseHeader("totalPagina");
 
 									for (var p = 0; p < totalPagina; p++) {
 
@@ -551,23 +525,18 @@
 												+ (p * 5);
 
 										$("#ulPaginacaoUserAjax")
-												.append(
-														'<li class="page-item"><a class="page-link" href="#" onclick="buscaUserPagAjax(\''
-																+ url
-																+ '\')">'
-																+ (p + 1)
-																+ '</a></li>');
-
+											.append('<li class="page-item"><a class="page-link" href="#" onclick="buscaUserPagAjax(\''
+											+ url
+											+ '\')">'
+											+ (p + 1)
+											+ '</a></li>');
 									}
-
 								}
-
 							}).fail(
 							function(xhr, status, errorThrown) {
-								alert('Erro ao buscar usu·rio por nome: '
+								alert('Erro ao buscar usu√°rio por nome: '
 										+ xhr.responseText);
 							});
-
 		}
 
 		function buscarUsuario() {
@@ -575,74 +544,56 @@
 			var nomeBusca = document.getElementById('nomeBusca').value;
 
 			if (nomeBusca != null && nomeBusca != '' && nomeBusca.trim() != '') { /*Validando que tem que ter valor pra buscar no banco*/
-
 				var urlAction = document.getElementById('formUser').action;
+				$.ajax(
+					{
+						method : "get",
+						url : urlAction,
+						data : "nomeBusca=" + nomeBusca
+						+ '&acao=buscarUserAjax',
+						success : function(response, textStatus,xhr) {
 
-				$
-						.ajax(
-								{
+							var json = JSON.parse(response);
+							$('#tabelaresultados > tbody > tr').remove();
+							$("#ulPaginacaoUserAjax > li").remove();
 
-									method : "get",
-									url : urlAction,
-									data : "nomeBusca=" + nomeBusca
-											+ '&acao=buscarUserAjax',
-									success : function(response, textStatus,
-											xhr) {
+							for (var p = 0; p < json.length; p++) {
+							$('#tabelaresultados > tbody')
+								.append(
+								'<tr> <td>'
+								+ json[p].id
+								+ '</td> <td> '
+								+ json[p].nome
+								+ '</td> <td><button onclick="verEditar('
+								+ json[p].id
+								+ ')" type="button" class="btn btn-info">Ver</button></td></tr>');
+							}
 
-										var json = JSON.parse(response);
+							document.getElementById('totalResultados').textContent = 'Resultados: '	+ json.length;
 
-										$('#tabelaresultados > tbody > tr')
-												.remove();
-										$("#ulPaginacaoUserAjax > li").remove();
+							var totalPagina = xhr.getResponseHeader("totalPagina");
 
-										for (var p = 0; p < json.length; p++) {
-											$('#tabelaresultados > tbody')
-													.append(
-															'<tr> <td>'
-																	+ json[p].id
-																	+ '</td> <td> '
-																	+ json[p].nome
-																	+ '</td> <td><button onclick="verEditar('
-																	+ json[p].id
-																	+ ')" type="button" class="btn btn-info">Ver</button></td></tr>');
-										}
-
-										document
-												.getElementById('totalResultados').textContent = 'Resultados: '
-												+ json.length;
-
-										var totalPagina = xhr
-												.getResponseHeader("totalPagina");
-
-										for (var p = 0; p < totalPagina; p++) {
-
-											var url = 'nomeBusca='
-													+ nomeBusca
-													+ '&acao=buscarUserAjaxPage&pagina='
-													+ (p * 5);
-
-											$("#ulPaginacaoUserAjax")
-													.append(
-															'<li class="page-item"><a class="page-link" href="#" onclick="buscaUserPagAjax(\''
-																	+ url
-																	+ '\')">'
-																	+ (p + 1)
-																	+ '</a></li>');
-
-										}
-
-									}
-
-								}).fail(
-								function(xhr, status, errorThrown) {
-									alert('Erro ao buscar usu·rio por nome: '
-											+ xhr.responseText);
-								});
-
+							for (var p = 0; p < totalPagina; p++) {
+								var url = 'nomeBusca='
+								+ nomeBusca
+								+ '&acao=buscarUserAjaxPage&pagina='
+								+ (p * 5);
+								$("#ulPaginacaoUserAjax").append(
+									'<li class="page-item"><a class="page-link" href="#" onclick="buscaUserPagAjax(\''
+								+ url + '\')">'
+								+ (p + 1)
+								+ '</a></li>');
+							}
+						}
+					})
+					.fail(function(xhr, status, errorThrown) {
+						alert('Erro ao buscar usu√°rio por nome: '
+						+ xhr.responseText);
+					});
 			}
-
 		}
-
+		
+		// delete with Ajax
 		function criarDeleteComAjax() {
 
 			var urlAction = document.getElementById('formUser').action;
@@ -651,50 +602,45 @@
 			if (idUser != null && idUser != '') {
 
 				if (confirm('Deseja realmente excluir os dados?')) {
+					$.ajax(
+						{
+							method : "get",
+							url : urlAction,
+							data : "id=" + idUser
+									+ '&acao=deletarajax',
+							success : function(response) {
 
-					$
-							.ajax(
-									{
+								limparForm();
+									document.getElementById('msg').textContent = response;
+									
+							}
 
-										method : "get",
-										url : urlAction,
-										data : "id=" + idUser
-												+ '&acao=deletarajax',
-										success : function(response) {
-
-											limparForm();
-											document.getElementById('msg').textContent = response;
-										}
-
-									}).fail(
-									function(xhr, status, errorThrown) {
-										alert('Error deleting user by id: '
-												+ xhr.responseText);
-									});
-					//reload(/principal/usuario.jsp);
+						}).fail(
+							function(xhr, status, errorThrown) {
+								alert('Error deleting user by id: '+ xhr.responseText);
+							}
+						);
+						// -- 
+						var urlAction = document.getElementById('formUser').action;
+						window.location.href = urlAction + '?acao=listarUser';
 
 				}
 			} else {
-
 				alert("\n\nUser must be selected. \nSearch the list below the registration form.");
 			}
-
 		}
-
+		
+		// function not more used; delete function is used only with Ajax (above)
 		function criarDelete() {
 
 			if (confirm('Deseja realmente excluir os dados?')) {
-
 				document.getElementById("formUser").method = 'get';
 				document.getElementById("acao").value = 'deletar';
 				document.getElementById("formUser").submit();
-
 			}
-
 		}
 
 		function limparForm() {
-
 			var elementos = document.getElementById("formUser").elements; /*Retorna os elementos html dentro do form*/
 
 			for (p = 0; p < elementos.length; p++) {

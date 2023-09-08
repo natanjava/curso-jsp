@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 
 <!-- Last Update: 26/06/2023, 11h20min -->
+<!-- Last Update: 08/09/2023, 11h20min -->
 
 
 <html lang="en">
@@ -66,7 +67,7 @@ h8 {
 
 <div class="mb-3">
   <label class="form-label" for="login">Login </label>
-  <input class="form-control" id="login" name="login" type="text" required value="admin1" style="width: 330px;">
+  <input class="form-control" id="login" name="login" type="text" required value="super-admin" style="width: 330px;">
    <div class="invalid-feedback">
       Required Field
     </div>
@@ -77,7 +78,7 @@ h8 {
  
  <div class="mb-3">
   <label class="form-label" for="senha">Password</label> 
-  <input class="form-control" id="senha" value="admin1" name="senha" type="password" required style="width: 330px;">
+  <input class="form-control" id="senha" value="superadmin" name="senha" type="password" required style="width: 330px;">
    <div class="invalid-feedback">
       Required field
     </div>
@@ -85,9 +86,7 @@ h8 {
       ok
     </div>
  </div>
-  <!-- 
-  <input class="btn btn-primary" type="button" value="See Available Logins" onclick="mostraLogins();" style="width: 200px; position: relative; left: 30px; top: 20px;"  > 
-   -->	
+
   <input type="submit" value="Access" class="btn btn-primary" style="width: 120px; position: relative; left: 100px; top: 20px;">
 
 </form>
@@ -121,14 +120,7 @@ h8 {
 })()
 
 
-function mostraLogins() {
-	const str = "\n\n"+"                          Logins / Passwords" +"\n\n"
-	+"                          admin1 / admin1" + "\n\n"
-	+"                          admin2 / admin2"+"\n\n";
-	window.alert(str);
 
-	
-}
 
 </script>
 </body>

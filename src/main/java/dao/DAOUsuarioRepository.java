@@ -372,7 +372,7 @@ public class DAOUsuarioRepository {
 		
 		ResultSet resultado = statement.executeQuery();
 		
-		while (resultado.next()) { /*percorrer as linhas de resultado do SQL*/
+		while (resultado.next()) { 
 			
 			ModelLogin modelLogin = new ModelLogin();
 			
@@ -403,7 +403,7 @@ public class DAOUsuarioRepository {
 		
 		ResultSet resultado = statement.executeQuery();
 		
-		while (resultado.next()) { /*percorrer as linhas de resultado do SQL*/
+		while (resultado.next()) { 
 			
 			ModelLogin modelLogin = new ModelLogin();
 			
@@ -433,7 +433,7 @@ public class DAOUsuarioRepository {
 		
 		ResultSet resutlado =  statement.executeQuery();
 		
-		while (resutlado.next()) /*Se tem resultado*/ {
+		while (resutlado.next())  {
 			
 			modelLogin.setId(resutlado.getLong("id"));
 			modelLogin.setEmail(resutlado.getString("email"));
@@ -473,7 +473,7 @@ public class DAOUsuarioRepository {
 		
 		ResultSet resutlado =  statement.executeQuery();
 		
-		while (resutlado.next()) /*Se tem resultado*/ {
+		while (resutlado.next())  {
 			
 			modelLogin.setId(resutlado.getLong("id"));
 			modelLogin.setEmail(resutlado.getString("email"));
@@ -511,7 +511,7 @@ public class DAOUsuarioRepository {
 		
 		ResultSet resutlado =  statement.executeQuery();
 		
-		while (resutlado.next()) /*Se tem resultado*/ {
+		while (resutlado.next())  {
 			
 			modelLogin.setId(resutlado.getLong("id"));
 			modelLogin.setEmail(resutlado.getString("email"));
@@ -549,7 +549,7 @@ public class DAOUsuarioRepository {
 		
 		ResultSet resutlado =  statement.executeQuery();
 		
-		while (resutlado.next()) /*Se tem resultado*/ {
+		while (resutlado.next())  {
 			
 			modelLogin.setId(resutlado.getLong("id"));
 			modelLogin.setEmail(resutlado.getString("email"));
@@ -589,7 +589,7 @@ public class DAOUsuarioRepository {
 		
 		ResultSet resutlado =  statement.executeQuery();
 		
-		while (resutlado.next()) /*Se tem resultado*/ {
+		while (resutlado.next())  {
 			
 			modelLogin.setId(resutlado.getLong("id"));
 			modelLogin.setEmail(resutlado.getString("email"));
@@ -631,6 +631,17 @@ public class DAOUsuarioRepository {
 	
 	
 	public void deletarUser(String idUser) throws Exception {
+		
+		/*--cascade Delete--*/
+		DAOTelefoneRepository daoTelefoneRepository = new DAOTelefoneRepository();
+		List<ModelTelefone> telefonesDoUsuario = daoTelefoneRepository.listFone(Long.parseLong(idUser));
+		if (telefonesDoUsuario != null) {
+			for (ModelTelefone telefone : telefonesDoUsuario) {
+				daoTelefoneRepository.deleteFone(telefone.getId());
+		    }			
+		}
+		/* ---- */
+		
 		String sql = "DELETE FROM model_login WHERE id = ? and useradmin is false;";
 		
 		PreparedStatement prepareSql = connection.prepareStatement(sql);

@@ -47,11 +47,11 @@ public class ServletUsuarioController extends ServletGenericUtil {
 			 
 			 daoUsuarioRepository.deletarUser(idUser);
 			 
-			 List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList(super.getUserLogado(request));
+			 List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList(super.getLoggedUser(request));
 		     request.setAttribute("modelLogins", modelLogins);
 		     
 			 request.setAttribute("msg", "Successfully deleted!");
-			 request.setAttribute("totalPagina", daoUsuarioRepository.totalPagina(this.getUserLogado(request)));
+			 request.setAttribute("totalPagina", daoUsuarioRepository.totalPagina(this.getLoggedUser(request)));
 			 request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
 		 }
 		 else if (acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("deletarajax")) {
@@ -60,7 +60,7 @@ public class ServletUsuarioController extends ServletGenericUtil {
 				 
 				 daoUsuarioRepository.deletarUser(idUser);
 				 
-				 response.getWriter().write("Excluido com sucesso!");
+				 response.getWriter().write("Successfully deleted!");
 			 
 		 }
 		 
@@ -68,13 +68,13 @@ public class ServletUsuarioController extends ServletGenericUtil {
 			 
 			 String nomeBusca = request.getParameter("nomeBusca");
 			 
-			 List<ModelLogin> dadosJsonUser =  daoUsuarioRepository.consultaUsuarioList(nomeBusca, super.getUserLogado(request));
+			 List<ModelLogin> dadosJsonUser =  daoUsuarioRepository.consultaUsuarioList(nomeBusca, super.getLoggedUser(request));
 			 
 			 ObjectMapper mapper = new ObjectMapper();
 			 
 			 String json = mapper.writeValueAsString(dadosJsonUser);
 			 
-			 response.addHeader("totalPagina", ""+ daoUsuarioRepository.consultaUsuarioListTotalPaginaPaginacao(nomeBusca, super.getUserLogado(request)));
+			 response.addHeader("totalPagina", ""+ daoUsuarioRepository.consultaUsuarioListTotalPaginaPaginacao(nomeBusca, super.getLoggedUser(request)));
 			 response.getWriter().write(json);
 			 
 		 }
@@ -84,13 +84,13 @@ public class ServletUsuarioController extends ServletGenericUtil {
 			 String nomeBusca = request.getParameter("nomeBusca");
 			 String pagina = request.getParameter("pagina");
 			 
-			 List<ModelLogin> dadosJsonUser =  daoUsuarioRepository.consultaUsuarioListOffSet(nomeBusca, super.getUserLogado(request), Integer.parseInt(pagina));
+			 List<ModelLogin> dadosJsonUser =  daoUsuarioRepository.consultaUsuarioListOffSet(nomeBusca, super.getLoggedUser(request), Integer.parseInt(pagina));
 			 
 			 ObjectMapper mapper = new ObjectMapper();
 			 
 			 String json = mapper.writeValueAsString(dadosJsonUser);
 			 
-			 response.addHeader("totalPagina", ""+ daoUsuarioRepository.consultaUsuarioListTotalPaginaPaginacao(nomeBusca, super.getUserLogado(request)));
+			 response.addHeader("totalPagina", ""+ daoUsuarioRepository.consultaUsuarioListTotalPaginaPaginacao(nomeBusca, super.getLoggedUser(request)));
 			 response.getWriter().write(json);
 			 
 		 	}
@@ -99,24 +99,24 @@ public class ServletUsuarioController extends ServletGenericUtil {
 			
 			    String id = request.getParameter("id");
 			 
-			     ModelLogin modelLogin = daoUsuarioRepository.consultaUsuarioID(id, super.getUserLogado(request));
+			     ModelLogin modelLogin = daoUsuarioRepository.consultaUsuarioID(id, super.getLoggedUser(request));
 			 
-			     List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList(super.getUserLogado(request));
+			     List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList(super.getLoggedUser(request));
 			     request.setAttribute("modelLogins", modelLogins);
 			     
 			    request.setAttribute("msg", "Editing user.");
 				request.setAttribute("modolLogin", modelLogin);
-				request.setAttribute("totalPagina", daoUsuarioRepository.totalPagina(this.getUserLogado(request)));
+				request.setAttribute("totalPagina", daoUsuarioRepository.totalPagina(this.getLoggedUser(request)));
 				request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
 		 }
 		 
 		 else if (acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("listarUser")) {
 			 
-			 List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList(super.getUserLogado(request));
+			 List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList(super.getLoggedUser(request));
 			 
 			 request.setAttribute("msg", "Users already saved in the system.");
 		     request.setAttribute("modelLogins", modelLogins);
-		     request.setAttribute("totalPagina", daoUsuarioRepository.totalPagina(this.getUserLogado(request)));
+		     request.setAttribute("totalPagina", daoUsuarioRepository.totalPagina(this.getLoggedUser(request)));
 			 request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
 			 
 		 }
@@ -124,7 +124,7 @@ public class ServletUsuarioController extends ServletGenericUtil {
 			 
 			 String idUser = request.getParameter("id");
 			 
-			 ModelLogin modelLogin =  daoUsuarioRepository.consultaUsuarioID(idUser, super.getUserLogado(request));
+			 ModelLogin modelLogin =  daoUsuarioRepository.consultaUsuarioID(idUser, super.getLoggedUser(request));
 			 if (modelLogin.getFotouser() != null && !modelLogin.getFotouser().isEmpty()) {
 				 
 				 response.setHeader("Content-Disposition", "attachment;filename=photo-employee." + modelLogin.getExtensaofotouser());
@@ -136,10 +136,10 @@ public class ServletUsuarioController extends ServletGenericUtil {
 		 else if (acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("paginar")) {
 			 Integer offset = Integer.parseInt(request.getParameter("pagina"));
 			 
-			 List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioListPaginada(this.getUserLogado(request), offset);
+			 List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioListPaginada(this.getLoggedUser(request), offset);
 			 
 			 request.setAttribute("modelLogins", modelLogins);
-		     request.setAttribute("totalPagina", daoUsuarioRepository.totalPagina(this.getUserLogado(request)));
+		     request.setAttribute("totalPagina", daoUsuarioRepository.totalPagina(this.getLoggedUser(request)));
 			 request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
 		 }
 		 else if (acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("imprimirRelatorioUser")) {
@@ -151,12 +151,12 @@ public class ServletUsuarioController extends ServletGenericUtil {
 			 if (dataInicial == null || dataInicial.isEmpty() 
 					 && dataFinal == null || dataFinal.isEmpty()) {
 				 
-				 request.setAttribute("listaUser", daoUsuarioRepository.consultaUsuarioListRel(super.getUserLogado(request)));
+				 request.setAttribute("listaUser", daoUsuarioRepository.consultaUsuarioListRel(super.getLoggedUser(request)));
 				 
 			 }else {
 				
 				 request.setAttribute("listaUser", daoUsuarioRepository
-						 .consultaUsuarioListRel(super.getUserLogado(request), dataInicial, dataFinal));
+						 .consultaUsuarioListRel(super.getLoggedUser(request), dataInicial, dataFinal));
 				 
 			 }
 			 
@@ -177,12 +177,12 @@ public class ServletUsuarioController extends ServletGenericUtil {
 			 if (dataInicial == null || dataInicial.isEmpty() 
 					 && dataFinal == null || dataFinal.isEmpty()) {
 				 
-				 modelLogins = daoUsuarioRepository.consultaUsuarioListRel(super.getUserLogado(request));
+				 modelLogins = daoUsuarioRepository.consultaUsuarioListRel(super.getLoggedUser(request));
 				 
 			 }else {
 				 
 				 modelLogins = daoUsuarioRepository
-						 .consultaUsuarioListRel(super.getUserLogado(request), dataInicial, dataFinal);
+						 .consultaUsuarioListRel(super.getLoggedUser(request), dataInicial, dataFinal);
 			 }
 			 
 			 
@@ -208,7 +208,7 @@ public class ServletUsuarioController extends ServletGenericUtil {
 				 
 				 
 				 BeanDtoGraficoSalarioUser beanDtoGraficoSalarioUser =   daoUsuarioRepository.
-						 montarGraficoMediaSalario(super.getUserLogado(request));
+						 montarGraficoMediaSalario(super.getLoggedUser(request));
 				 
 				   ObjectMapper mapper = new ObjectMapper();
 				 
@@ -220,7 +220,7 @@ public class ServletUsuarioController extends ServletGenericUtil {
 			 }else {
 				 
 				 BeanDtoGraficoSalarioUser beanDtoGraficoSalarioUser =   daoUsuarioRepository.
-						 montarGraficoMediaSalario(super.getUserLogado(request), dataInicial, dataFinal);
+						 montarGraficoMediaSalario(super.getLoggedUser(request), dataInicial, dataFinal);
 				 
 				   ObjectMapper mapper = new ObjectMapper();
 				 
@@ -237,9 +237,9 @@ public class ServletUsuarioController extends ServletGenericUtil {
 		 }
 		
 		 else {
-			 List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList(super.getUserLogado(request));
+			 List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList(super.getLoggedUser(request));
 		     request.setAttribute("modelLogins", modelLogins);
-		     request.setAttribute("totalPagina", daoUsuarioRepository.totalPagina(this.getUserLogado(request)));
+		     request.setAttribute("totalPagina", daoUsuarioRepository.totalPagina(this.getLoggedUser(request)));
 			 request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
 		 }
 		 
@@ -320,17 +320,17 @@ public class ServletUsuarioController extends ServletGenericUtil {
 				msg= "User updated successfully.";
 			}
 			
-		    modelLogin = daoUsuarioRepository.gravarUsuario(modelLogin, super.getUserLogado(request));
+		    modelLogin = daoUsuarioRepository.gravarUsuario(modelLogin, super.getLoggedUser(request));
 		}
 		
 		
-		 List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList(super.getUserLogado(request));
+		 List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList(super.getLoggedUser(request));
 	     request.setAttribute("modelLogins", modelLogins);
-		request.setAttribute("msg", msg);
-		request.setAttribute("modolLogin", modelLogin);
-		request.setAttribute("totalPagina", daoUsuarioRepository.totalPagina(this.getUserLogado(request)));
+		 request.setAttribute("msg", msg);
+		 request.setAttribute("modolLogin", modelLogin);
+		 request.setAttribute("totalPagina", daoUsuarioRepository.totalPagina(this.getLoggedUser(request)));
 		
-		request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
+		 request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
 		
 		} catch (Exception e) {
 			e.printStackTrace();

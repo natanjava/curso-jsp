@@ -57,20 +57,20 @@
 			                                                        The system registers, edits, lists and deletes users in the system. At the time of registration, 
 			                                                        there are fields to be validated. Registration is only finalized when all fields are validated. 
 			                                                        Below the registration form, there are some users who have already been registered in the system. 
-			                                                        You can individually edit each user and search for a specific user by name. Once registered,
-			                                                        you can add one or more phones for each user. It is not mandatory data. It can generate reports on 
-			                                                        users and generate a salary comparison chart. <br>
-			                                                        ADMIN means (system)ADMINISTRATOR, AUXILIAR means ASSISTANT and SECRETARIA means SECRETARY.
+			                                                        It can generate reports on users and generate a salary comparison chart. <br><br>
+			                                                        			                                                        
+			                                                        The initial login to the system is done through the user super-admin (login: super-admin; 
+			                                                        password: superadmin; position: ADMIN; salary: $5000.00). 
 			                                                    </p>
 			                                                </div>
 			                                                <a class="accordion-msg bg-dark-primary b-none waves-effect waves-light">User Control - Access Restriction</a>
 			                                                <div class="accordion-desc">
 			                                                    <p>
-			                                                        For the purpose of 'business rules': The user admin1 (password 'admin1') does not appear in searches. Who created admin1 was himself. 
-			                                                        His salary is '9700.76'. When an ADMIN generates the salary report, the data that appears on the screen belongs to users that were created 
-			                                                        by the ADMIN itself. Only those who are ADMIN can create new users, including new ADMINs, and these new ADMINs will be visible. 
-			                                                        Not only user type ADMIN, but also other types of user (AUXILIARY/ASSISTENT or SECRETARIA/SECRETARY) can access the system, using login/password, 
-			                                                        but they cannot register new users in the system. They have no such privilege.
+			                                                        For the purpose of 'business rules': 
+			                                                        Only ADMIN users can create new records. If an ADMIN is created, he cannot access to records created by another ADMIN. 
+			                                                        Then each ADMIN has their own list of records and consequently reports and graphs are generated with different results.
+			                                                        Not only ADMIN, but also other types of user (ASSISTENT or MANAGER) can access the system, 
+			                                                        using login/password, but they cannot register new users in the system. They have no such privilege.
 			                                                    </p>
 			                                                </div>
 			                                                <a class="accordion-msg bg-darkest-primary b-none waves-effect waves-light">ZIP CODE Validation</a>
@@ -86,7 +86,8 @@
 			                                                <a class="accordion-msg bg-darkest-primary b-none waves-effect waves-light">Tools - Technical information</a>
 			                                                <div class="accordion-desc">
 			                                                    <p>
-			                                                    Eclipse IDE, Postgresql Database 9.5, Java Server Pages, Javascript, JasperReports, Bootstrap. 
+			                                                    Eclipse IDE, Postgresql Database, Java Server Pages and Servlets, JavaScript, JasperReports, Bootstrap. 
+			                                                    <br> Git Hub Project Link: ---
 			                                                    </p>
 			                                                </div>
 			                                                

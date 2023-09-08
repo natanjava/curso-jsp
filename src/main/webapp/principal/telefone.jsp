@@ -48,7 +48,7 @@
 													<div class="card-block">
 														<h4 class="sub-title">Phone registration</h4>
 															
-															 <form class="form-material"  action="<%= request.getContextPath() %>/SertvletTelefone" method="post" id="formFone" >
+														<form class="form-material"  action="<%= request.getContextPath() %>/SertvletTelefone" method="post" id="formFone" >
 
 															<div class="form-group form-default form-static-label">
 																<input type="text" name="id" id="id"
@@ -60,20 +60,22 @@
 															
 															
 															<div class="form-group form-default form-static-label">
-                                                                <input readonly="readonly" type="text" name="nome" id="nome" class="form-control" required="required" value="${modelLogin.nome}">
+                                                                <input readonly="readonly" type="text" name="nome" id="nome" class="form-control" required="required" 
+                                                                        value="${modelLogin.nome}">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Name:</label>
                                                             </div>
                                                             
                                                             
                                                             <div class="form-group form-default form-static-label">
-                                                                <input  type="text" name="numero" id="numero" class="form-control" required="required" >
+                                                                <input  type="text" name="numero" id="numero" class="form-control" required="required" maxlength="20" >
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Phone number:</label>
                                                             </div>
                                                             
                                                             <button  class="btn btn-success waves-effect waves-light">Save</button>
-
+															<button onclick="window.location.href='<%= request.getContextPath() %>/ServletUsuarioController?acao=listarUser';"  
+															         class="btn btn-info">User Page</button>
 														</form>
 													</div>
 
