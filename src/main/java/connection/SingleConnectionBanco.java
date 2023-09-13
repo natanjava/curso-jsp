@@ -17,7 +17,7 @@ public class SingleConnectionBanco {
     // AWS connection
 	private static String banco = "jdbc:postgresql://16.170.235.54:5432/curso-jsp?autoReconnect=true";
 	private static String user = "natan-aws";
-	private static String senha = "bd123";
+	private static String senha = "xxxx";
 	private static Connection connection = null; 
 	
 	
