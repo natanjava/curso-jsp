@@ -7,7 +7,7 @@
                               <div class="row align-items-center">
                                   <div class="col-md-8">
                                       <div class="page-header-title">
-                                          <h5 class="m-b-10">Projeto 1 - User Managment System</h5>
+                                          <h5 class="m-b-10">Project 1 - User Managment System wiht JSP and Servlets</h5>
                                           <p class="m-b-0">Welcome!</p>
                                       </div>
                                   </div>

@@ -5,13 +5,24 @@ import java.sql.DriverManager;
 
 public class SingleConnectionBanco {
 	
+	/* 
+	//localhost
 	private static String banco = "jdbc:postgresql://localhost:5433/curso-jsp?autoReconnect=true";
 	private static String user = "postgres";
 	private static String senha = "admin";
 	private static Connection connection = null; 
+	*/
 	
-	 //conexão direta com o banco no servidor Heroku
+	
+    // AWS connection
+	private static String banco = "jdbc:postgresql://16.170.235.54:5432/curso-jsp?autoReconnect=true";
+	private static String user = "natan-aws";
+	private static String senha = "bd123";
+	private static Connection connection = null; 
+	
+	
 	/*
+    // Heroku connection
 	private static String banco = "jdbc:postgresql://ec2-34-236-103-63.compute-1.amazonaws.com:5432/dbjnekanokg26n?sslmode=require&autoReconnect=true";
 	private static String user = "sfnuuqgvjmyfqw";
 	private static String senha = "2c625d3a34127e633d1cdd4983391d8a67e289372e313a712340ac3e16fcdcfa";

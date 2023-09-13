@@ -86,8 +86,8 @@
 			                                                <a class="accordion-msg bg-darkest-primary b-none waves-effect waves-light">Tools - Technical information</a>
 			                                                <div class="accordion-desc">
 			                                                    <p>
-			                                                    Eclipse IDE, Postgresql Database, Java Server Pages and Servlets, JavaScript, JasperReports, Bootstrap. 
-			                                                    <br> Git Hub Project Link: ---
+			                                                    Eclipse IDE, Postgresql Database, Java Server Pages and Servlets, JavaScript, JasperReports, Bootstrap, EC2 Amazon Technology. 
+			                                                    <br> Git Hub Project Link: https://github.com/natanjava/curso-jsp
 			                                                    </p>
 			                                                </div>
 			                                                

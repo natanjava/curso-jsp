@@ -61,11 +61,19 @@
 
 
 
-
+		<!-- postgresql 9.5
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.4.1212</version>
+		</dependency>
+		-->
+		
+		<!-- postgresql 15.4-->
+		<dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>42.2.24</version>
 		</dependency>
 
 
@@ -100,7 +108,13 @@
 			<version>6.17.0</version>
 		</dependency>
 		
-		
+		<!-- 
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports-fonts</artifactId>
+			<version>6.17.0</version>
+		</dependency>
+		-->
 		
 		
 		
@@ -155,6 +169,7 @@
 				<version>3.2.3</version>
 			</plugin>
 
+			<!-- heroku deploy plugin
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -177,6 +192,9 @@
 					</execution>
 				</executions>
 			</plugin>
+			-->
+			
+			
 		</plugins>
 	</build>
 </project>
