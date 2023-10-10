@@ -84,7 +84,7 @@
 										</div>
 										
 										
-										 <span id="msg">${msg}</span>
+										 <span id="msg" style="background-color: black; color: white;">${msg}</span>
 										 
 										 
 										 <div style="height: 300px; overflow: scroll;">

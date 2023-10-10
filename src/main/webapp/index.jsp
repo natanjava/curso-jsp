@@ -13,7 +13,7 @@
 	<!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 	
-	<title>User Managment System</title>
+	<title>System 1</title>
 	
 <style type="text/css">
 
@@ -27,8 +27,8 @@ form{
 
 h2{
  position: absolute;
- top: 13%;
- left: 33%;
+ top: 20%;
+ left: 38%;
 }
 h8 {
  position: absolute;
@@ -52,7 +52,7 @@ h8 {
 <body>
 
  
-<h2>Welcome to "User <br> Management System"</h2>  
+<h2>Login Page</h2>  
 <!-- 
 <h8>Logins/Passwords available: <br>
 	admin1 / admin1 or

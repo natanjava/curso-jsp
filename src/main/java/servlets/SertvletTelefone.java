@@ -28,35 +28,33 @@ public class SertvletTelefone extends ServletGenericUtil {
 		
 		try {
 			
-		String acao = request.getParameter("acao");
-		
-		if (acao != null && !acao.isEmpty() && acao.equals("excluir")) {
+			String acao = request.getParameter("acao");
 			
-			String idfone = request.getParameter("id");
-			
-			daoTelefoneRepository.deleteFone(Long.parseLong(idfone));
-			
-			String userpai = request.getParameter("userpai");
-			
-			ModelLogin modelLogin = daoUsuarioRepository.consultaUsuarioID(Long.parseLong(userpai));
-			
-			List<ModelTelefone> modelTelefones = daoTelefoneRepository.listFone(modelLogin.getId());
-			request.setAttribute("modelTelefones", modelTelefones);
-			
-			request.setAttribute("msg", "Phone deleted successfully.");
-			request.setAttribute("modelLogin", modelLogin);
-			request.getRequestDispatcher("principal/telefone.jsp").forward(request, response);
-			
-			return;
-		}
-		
-		
-			
-		
-		String iduser = request.getParameter("iduser");
-		
-		if (iduser != null && !iduser.isEmpty()) {
+			if (acao != null && !acao.isEmpty() && acao.equals("excluir")) {
 				
+				String idfone = request.getParameter("id");
+				
+				daoTelefoneRepository.deleteFone(Long.parseLong(idfone));
+				
+				String userpai = request.getParameter("userpai");
+				
+				ModelLogin modelLogin = daoUsuarioRepository.consultaUsuarioID(Long.parseLong(userpai));
+				
+				List<ModelTelefone> modelTelefones = daoTelefoneRepository.listFone(modelLogin.getId());
+				request.setAttribute("modelTelefones", modelTelefones);
+				
+				request.setAttribute("msg", "Phone deleted successfully.");
+				request.setAttribute("modelLogin", modelLogin);
+				request.getRequestDispatcher("principal/telefone.jsp").forward(request, response);
+				
+				return;
+			}
+			
+		
+			String iduser = request.getParameter("iduser");
+
+			if (iduser != null && !iduser.isEmpty()) {
+					
 				ModelLogin modelLogin = daoUsuarioRepository.consultaUsuarioID(Long.parseLong(iduser));
 			
 				List<ModelTelefone> modelTelefones = daoTelefoneRepository.listFone(modelLogin.getId());
@@ -64,17 +62,15 @@ public class SertvletTelefone extends ServletGenericUtil {
 				
 				request.setAttribute("modelLogin", modelLogin);
 				request.getRequestDispatcher("principal/telefone.jsp").forward(request, response);
-	
+			
+			} else {
+				 List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList(super.getLoggedUser(request));
+			     request.setAttribute("modelLogins", modelLogins);
+			     request.setAttribute("totalPagina", daoUsuarioRepository.totalPagina(this.getLoggedUser(request)));
+				 request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
+			}
 		
-		}else {
-			 List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList(super.getLoggedUser(request));
-		     request.setAttribute("modelLogins", modelLogins);
-		     request.setAttribute("totalPagina", daoUsuarioRepository.totalPagina(this.getLoggedUser(request)));
-			 request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
-		}
-		
-		
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
@@ -88,18 +84,24 @@ public class SertvletTelefone extends ServletGenericUtil {
 			String usuario_pai_id = request.getParameter("id");
 			String numero = request.getParameter("numero");
 			
-			
 			if (!daoTelefoneRepository.existeFone(numero, Long.valueOf(usuario_pai_id))) {
+				
+				if(daoTelefoneRepository.countPhone( Long.valueOf(usuario_pai_id)) ) {
+					ModelTelefone modelTelefone = new ModelTelefone();
+					
+					modelTelefone.setNumero(numero);
+					modelTelefone.setUsuario_pai_id(daoUsuarioRepository.consultaUsuarioID(Long.parseLong(usuario_pai_id)));
+					modelTelefone.setUsuario_cad_id(super.getUserLogadoObjt(request));
+					
+					daoTelefoneRepository.gravaTelefone(modelTelefone);
+					
+					request.setAttribute("msg", "Phone saved successfully.");
+				}
+				
+				else {
+					request.setAttribute("msg", "Maximum number of telephones per registration: 3.");
+				}
 			
-				ModelTelefone modelTelefone = new ModelTelefone();
-				
-				modelTelefone.setNumero(numero);
-				modelTelefone.setUsuario_pai_id(daoUsuarioRepository.consultaUsuarioID(Long.parseLong(usuario_pai_id)));
-				modelTelefone.setUsuario_cad_id(super.getUserLogadoObjt(request));
-				
-				daoTelefoneRepository.gravaTelefone(modelTelefone);
-				
-				request.setAttribute("msg", "Phone saved successfully.");
 			
 			}else {
 				request.setAttribute("msg", "Phone already exists.");

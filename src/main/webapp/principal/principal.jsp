@@ -86,11 +86,12 @@
 			                                                <a class="accordion-msg bg-darkest-primary b-none waves-effect waves-light">Tools - Technical information</a>
 			                                                <div class="accordion-desc">
 			                                                    <p>
-			                                                    Eclipse IDE, Postgresql Database, Java Server Pages and Servlets, JavaScript, JasperReports, Bootstrap, EC2 Amazon Technology. 
-			                                                    <br> Git Hub Project Link: https://github.com/natanjava/curso-jsp
+			                                                    Eclipse IDE, Postgresql Database, Java Server Pages and Servlets, JavaScript, <a href="https://www.chartjs.org/" target="_blank">ChartJS</a>,  Bootstrap, 
+			                                                    JasperReports, EC2 Amazon Technology. 
+			                                                    
+			                                                    <br><br> <a href="https://github.com/natanjava/jsp-servlets" target="_blank">PROJECT ON GITHUB</a>. 
 			                                                    </p>
 			                                                </div>
-			                                                
 			                                            </div>
 			                                         </div>
 			                                      </div>

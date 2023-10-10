@@ -61,8 +61,24 @@ public class DAOTelefoneRepository {
 		preparedStatement.execute();
 
 		connection.commit();
-
 	}
+	
+	
+	
+	public boolean countPhone (Long id) throws Exception {
+		String sql = "SELECT COUNT(*) FROM telefone WHERE usuario_pai_id = ?";
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setLong(1, id);
+		
+		ResultSet resultSet = preparedStatement.executeQuery();
+	    if (resultSet.next()) {
+	        int phoneCount = resultSet.getInt(1);
+	        return phoneCount < 3;
+	    }
+	    return false;
+	}
+	
+	
 
 	public void deleteFone(Long id) throws Exception {
 		
