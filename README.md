@@ -1,4 +1,4 @@
-# curso-jsp
+# JSP-SERVLETS
 
 About the System.
 The system registers, edits, lists and deletes users in the system. At the time of registration, there are fields to be validated. 
